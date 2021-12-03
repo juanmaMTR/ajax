@@ -75,6 +75,20 @@ function cargarFichero6(){
     .then(respuesta => respuesta.text())  //Recibimos un objeto de tipo Response. respuesta.text devuelve una Promise
     .then(texto => document.getElementById('span6').innerHTML = texto)
 }
+function peticionPOSTJSON(){
+  let datos={
+    'param1':42,
+    'param2': 'Juanma'
+  }
+  let opciones={
+    method: 'POST',
+    body: JSON.stringify(datos),
+    headers:{ 'Content-Type': 'application/json'}
+  }
+  fetch('php/datos_post_json.php', opciones)
+    .then(respuesta=>respuesta.text())
+    .then(texto=>document.getElementById('span6').innerHTML=texto)
+}
 
 //Control de errores
 function cargarFichero7(){
@@ -94,4 +108,19 @@ function cargarFichero8(){
   fetch('datos.json') //Hacemos la petición
     .then(respuesta => respuesta.json())  //Recibimos un objeto de tipo Response. respuesta.text devuelve una Promise
     .then(datos => document.getElementById('span8').innerHTML = `${datos.atrib1} sabe que el sentido del Universo es ${datos.atrib2}`)
+}
+
+function jsonJson(){
+  let datos={
+    'param1':42,
+    'param2': 'Juanma'
+  }
+  let opciones={
+    method: 'POST',
+    body: JSON.stringify(datos),
+    headers:{ 'Content-Type': 'application/json'}
+  }
+  fetch('php/datos_post_json2.php', opciones)
+    .then(respuesta=>respuesta.json())
+    .then(objeto=>document.getElementById('span9').innerHTML=`${datos.atrib1} sabe que el sentido del Universo es ${datos.atrib2}`)
 }
